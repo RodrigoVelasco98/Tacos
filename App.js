@@ -7,6 +7,7 @@ import HomeScreen from './screens/HomeScreen';
 import MenuScreen from './screens/MenuScreen';
 import ConfirmOrderScreen from './screens/ConfirmOrderScreen';
 import OrderSummaryScreen from './screens/OrderSummaryScreen';
+import QRScanner from './components/Scanner'
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,7 @@ export default function App() {
         <Stack.Screen name="Menu" component={MenuScreen} />
         <Stack.Screen name="ConfirmarOrden" component={ConfirmOrderScreen} />
         <Stack.Screen name="ResumenDelPedido" component={OrderSummaryScreen} />
+        <Stack.Screen name="Scanner" component={QRScanner} />
       </Stack.Navigator>
     </NavigationContainer>
   );

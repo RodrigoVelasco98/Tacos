@@ -4,6 +4,41 @@ import { View, Text, Button, StyleSheet, FlatList, Image, TouchableOpacity } fro
 const OrderSummaryScreen = ({ route, navigation }) => {
   const { order, name, totalPrice } = route.params;
 
+  const handleConfirmOrder = () => {
+    const pedido = {
+      customerName: name,
+      totalPrice: totalPrice,
+      products: Object.values(order).map(item => ({
+        productId: item.id,
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price,
+      }))
+    };
+
+    console.log('Datos enviados:', pedido); 
+
+    fetch('http://10.0.0.6:3000/guardarOrden', {  
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(pedido)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      if (data.status === 'Success') {
+        alert("Pedido realizado correctamente");
+      } else {
+        alert("Pedido realizado correctamente");
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Pedido de {name}</Text>
@@ -24,7 +59,7 @@ const OrderSummaryScreen = ({ route, navigation }) => {
       <TouchableOpacity style={styles.modifyButton} onPress={() => navigation.navigate('Menu')}>
         <Text style={styles.buttonText}>Cambiar Pedido</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.confirmButton} onPress={() => alert('Pedido Confirmado')}>
+      <TouchableOpacity style={styles.confirmButton} onPress={handleConfirmOrder}>
         <Text style={styles.buttonText}>Confirmar Pedido</Text>
       </TouchableOpacity>
     </View>

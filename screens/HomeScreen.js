@@ -14,7 +14,7 @@ const HomeScreen = ({ navigation }) => {
           <Text style={styles.welcomeTextTop}>Bienvenido a Tacos</Text>
           <Text style={styles.welcomeTextBottom}>INTERESTELAR</Text>
         </View>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Menu')}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Scanner')}>
           <Text style={styles.buttonText}>Order Now</Text>
         </TouchableOpacity>
       </View>

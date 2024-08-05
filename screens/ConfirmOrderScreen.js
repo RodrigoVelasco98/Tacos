@@ -30,7 +30,7 @@ const ConfirmOrderScreen = ({ route, navigation }) => {
         onChangeText={setName}
       />
       <TouchableOpacity style={styles.confirmButton} onPress={() => navigation.navigate('ResumenDelPedido', { order, name, totalPrice })}>
-        <Text style={styles.buttonText}>Confirmar Pedido</Text>
+        <Text style={styles.buttonText}>Confirmar Nombre</Text>
       </TouchableOpacity>
     </View>
   );
